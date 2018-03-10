@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>登陆</title>
+    <script type="application/javascript" src="/js/jq3.3.1.js" ></script>
+    <link type="text/css" rel="stylesheet" href="/css/admin-base.css" />
+</head>
+<style>
+    html,body{background-color: #ccccee;
+        width: 100%;height: 100%;}
+    form{
+        position: absolute;left:50%;top:50%;border:thin solid #FFF;
+        padding:20px 30px;
+        transform: translate(-50%,-50%);
+    }
+</style>
+<body>
+
+<form method="post">
+    <table>
+        <tr><td><?= $error_msg ?></td></tr>
+        <tr><td>账号：</td><td><input name="admin_name" type="text" placeholder="输入账号"></td></tr>
+        <tr><td>密码：</td><td><input name="admin_pass" type="password" placeholder="输入密码"></td></tr>
+        <tr><td colspan="2"><input type="submit" value="登陆"></td></tr>
+    </table>
+</form>
+</body>
+</html>

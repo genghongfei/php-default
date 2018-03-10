@@ -45,6 +45,22 @@ class G{
     }
 }
 abstract class Controller{
+    public function __construct()
+    {
+        $this->before();
+    }
+    public function __destruct()
+    {
+        $this->after();
+    }
+
+    protected function before(){
+
+    }
+    protected function after(){
+
+    }
+
     abstract function get();
     public function post(){
         $this->get();
@@ -223,8 +239,20 @@ class Http{
     static function cookie($k,$def = ''){
         return self::_fetchDateByKey($_COOKIE,$k,$def);
     }
+    static function session($k,$def = ''){
+        session_start();
+        return self::_fetchDateByKey($_SESSION,$k,$def);
+    }
+    static function setSession($k,$v){
+        session_start();
+        $_SESSION[$k] = $v;
+    }
     private static function _fetchDateByKey($data,$key,$def){
         return isset($data[$key]) ? $data[$key] : $def;
+    }
+    static function go($url){
+        header(sprintf("Location: %s",$url));
+        die();
     }
 }
 
