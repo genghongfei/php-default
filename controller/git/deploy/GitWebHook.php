@@ -14,6 +14,7 @@ class GitWebHook extends \g\Controller
     public function get(){
         $req = json_decode(file_get_contents("php://input"),true);
         $gitName = $req['repository']['name'];
+        $gitName = 'php-default';
         (new \model\git\GitApp())->deployByGitName($gitName);
     }
 }
