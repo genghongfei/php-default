@@ -65,7 +65,7 @@ class GitApp extends \g\Model
         location = /40x.html {
     }
     access_log %s/%s.log;
-    error_log %s/%s.log;
+    error_log %s/%s.error;
     
 
     error_page 500 502 503 504 /50x.html;

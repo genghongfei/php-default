@@ -11,10 +11,13 @@ namespace controller\git\deploy;
 
 class GitWebHook extends \g\Controller
 {
+    /**
+     * /git/deploy/GItWebHook
+     */
     public function get(){
         $req = json_decode(file_get_contents("php://input"),true);
         $gitName = $req['repository']['name'];
-        $gitName = 'php-default';
+        //$gitName = 'php-default';
         (new \model\git\GitApp())->deployByGitName($gitName);
     }
 }
