@@ -12,6 +12,13 @@ namespace controller\git\nginx;
 class Index extends \controller\Admin
 {
     public function get(){
+        $data = [];
+        $this->layout("admin/git/nginx/index.html",$data);
+    }
+    public function put(){
+
+    }
+    public function post(){
 
     }
 }

@@ -12,6 +12,11 @@ if($_SERVER['RUN_DEV'] == 'MacPro') { //开发机器
     define('dbuser', 'root');
     define('dbpass', '');
     define('LOG_DIR', '/Data/logs/apps/default/');
+}elseif($_SERVER['RUN_DEV'] == 'TAOXUEBA') { //正式环境
+    define('dbdsn', 'mysql:host=127.0.0.1;dbname=gtool');
+    define('dbuser', 'root');
+    define('dbpass', '');
+    define('LOG_DIR', '/Data/logs/apps/default/');
 }
 class G{
     static function run()
@@ -70,6 +75,17 @@ abstract class Controller{
     }
     public function put(){
         $this->get();
+    }
+    public function isAjax(){
+
+    }
+    protected function json($data){
+        echo json_encode(['code' => 0,'msg' => '','data' => $data]);
+        die();
+    }
+    protected function jsonError($code,$msg){
+        echo json_encode(['code' => $code,'msg' => $msg,'data' => []]);
+        die();
     }
     protected function display($tpl,$var = []){
         $file = ROOT.'views'.DS.$tpl;
